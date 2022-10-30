@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item nav-category">Main</li>
+    <li class="nav-item nav-category">Menu</li>
     <!-- <li class="nav-item">
       <a class="nav-link" href="#">
         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
@@ -10,7 +10,25 @@
     <li class="nav-item">
       <a class="nav-link" href="/dashboard/pelanggan">
         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-        <span class="menu-title">Data Pelanggan</span>
+        <span class="menu-title">Modul</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/pelanggan">
+        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+        <span class="menu-title">Tugas</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/pelanggan">
+        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+        <span class="menu-title">Data Siswa</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard/pelanggan">
+        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+        <span class="menu-title">Data Pembayaran</span>
       </a>
     </li>
     <!-- <div class="collapse" id="ui-basic">
