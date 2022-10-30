@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <title>BiFAst</title>
+    <title>BiFast</title>
 
     <!-- Bootstrap core CSS -->
     <!-- CSS only -->
