@@ -24,44 +24,49 @@
               @csrf
             <!-- Name input -->
             <div class="form-outline mb-4">
-                <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}"/>
+                <input type="text" id="name" class="form-control @error('name') is-invalid                        
+                        @enderror" name="name" value="{{ old('name') }}"/>
                 <label class="form-label" for="name">Name</label>
-                {{-- @error('name')
+                @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
             </div>
 
             <div class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}"/>
+                <input type="email" id="email" class="form-control @error('email') is-invalid                        
+                        @enderror" name="email" value="{{ old('email') }}"/>
                 <label class="form-label" for="email">E-mail</label>
-                {{-- @error('email')
+                @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
             </div>
             <!-- No input -->
             <div class="form-outline mb-4">
-                <input type="text" id="nohp" class="form-control" name="nohp" value="{{ old('nohp') }}"/>
-                <label class="form-label" for="nohp">No Handphone</label>
-                {{-- @error('nohp')
+                <input type="number" id="phone" class="form-control @error('phone') is-invalid                        
+                        @enderror" name="phone" value="{{ old('phone') }}"/>
+                <label class="form-label" for="phone">Phone Number</label>
+                @error('phone')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
             </div>
    
               <!-- Password input -->
               <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control"  name="password" />
+                 <input type="password" id="password" class="form-control @error('password') is-invalid                        
+                        @enderror" name="password" />
+          
                 <label class="form-label" for="password">Password</label>
-                {{-- @error('password')
+                @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
               </div>
   
               <!-- Submit button -->
