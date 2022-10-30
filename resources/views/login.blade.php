@@ -24,7 +24,7 @@
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5">Login</h2>
 
-            {{-- @if (session()->has('success'))
+            @if (session()->has('success'))
               <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -36,31 +36,32 @@
                   {{ session('loginError') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-            @endif --}}
+            @endif
 
             <form action="/login" method="POST">
               @csrf
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <!-- Email input -->
               <div class="form-outline mb-4">
-                <input type="email" id="email" class="form-control " name="email" />
+                <input type="email" id="email" class="form-control @error('email') is-invalid                        
+                        @enderror" name="email" value="{{ old('email') }}"/>
                 <label class="form-label" for="email">Email</label>
-                {{-- @error('email')
+                @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
               </div>
   
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <input type="password" id="password" class="form-control" name="password"/>
                 <label class="form-label" for="password">Password</label>
-                {{-- @error('password')
+                @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
-                @enderror --}}
+                @enderror
               </div>
   
               <!-- Submit button -->
