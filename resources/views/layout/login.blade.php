@@ -12,7 +12,7 @@
     
     <style>
         body {
-          background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/login.jpg);	
+          background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(assets/img/itu.jpg);	
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-size: cover;
