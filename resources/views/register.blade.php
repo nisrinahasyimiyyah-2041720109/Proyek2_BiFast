@@ -68,7 +68,6 @@
                 </div>
                 @enderror
               </div>
-  
               <!-- Submit button -->
               <button type="submit" class="btn btn-success btn-block mb-4">
                 Register
