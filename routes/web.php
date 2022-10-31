@@ -22,6 +22,10 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
