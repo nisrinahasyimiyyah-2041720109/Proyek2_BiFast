@@ -1,84 +1,70 @@
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-      <div class="container">
-          <a class="navbar-brand" href="/">
-              <img src="assets/images/header-logo.png" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto ">
-                  <li class="nav-link {{ Request::is('/') ? 'active' : '' }}">
-                      <a class="nav-link" href="/">Home
-                          <span class="sr-only"></span>
-                      </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+    <img src="{{ asset('images\logo-main.png') }}" alt="logo" height="30" class="d-inline-block align-text-top">     
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class= "nav-link {{ Request::is('course') ? 'active' : '' }} "  href="/course"><i class="bi bi-book-half mx-2"></i>Courses</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Category
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <form action="/course" class="d-inline">
+                            @csrf
+                            @foreach ($category as $c)
+                        {{-- <li><a class="dropdown-item" href="#">Action</a></li> --}}
+                        <input type="hidden" name="search" id="search" value="{{ $c->id }}">
+                        <li> <button type="submit" class="dropdown-item" >{{ $c->name }}</button></li>
+                        @endforeach
+                        </form>
+                    </ul>
                   </li>
-                  <li class="nav-link {{ Request::is('about') ? 'active' : '' }}">
-                      <a class="nav-link" href="/about">About Us</a>
-                  </li>
-                  @auth
-                    @if (auth()->user()->role == 'pembeli')
-                        <li class="nav-link {{ Request::is('contact') ? 'active' : '' }}">
-                        <a class="nav-link" href="/review/create">Contact Us</a>
-                        </li>
-                    @endif
-                  @endauth
-                  
-              </ul>
-              <ul class="navbar-nav ms-auto">
-                  @auth
-                      @if (auth()->user()->role == 'pembeli')
-                          <li class="nav-item">
-                              <a class="nav-link " href="/keranjang"><i class="bi bi-cart3 mx-2"></i>Trolie</a>
-                          </li>
-                          <div class="vr" style="color :white; margin: 0px 8px 0px 8px;"></div>
+               
+            </ul>
+
+
+            <ul class="navbar-nav ms-auto">
+                @auth
+                @if(auth()->user()->role == 'member')
+                <li class="nav-item">
+                    <a class= "nav-link {{ Request::is('courseMember') ? 'active' : '' }}"  href="/courseMember"><i class="bi bi-journal-text mx-2"></i>My Course</a>
+                </li>
+                <div class="vr" style="color :white; margin: 0px 8px 0px 8px;"></div>
+                @endif
+                <li class="nav-item dropdown">            
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Welcome back , {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      @if(auth()->user()->role == 'admin')
+                      <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-clipboard-minus"></i> My Dashboard</a></li>
+                      @else
+                      <li><a class="dropdown-item" href="/transaksiMember"><i class="bi bi-menu-button-wide"></i> My Transaction</a></li>
                       @endif
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              Welcome back , {{ auth()->user()->username }}
-                          </a>
-                          @if (auth()->user()->role == 'admin')
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <li><a class="dropdown-item" href="/admin"><i class="bi bi-clipboard-minus"></i> My
-                                          Dashboard</a></li>
-                                  <li>
-                                      <hr class="dropdown-divider">
-                                  </li>
-                                  <li>
-                                      <form action="/logout" action="get">
-                                          @csrf
-                                          <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i>
-                                              Logout</button>
-                                      </form>
-
-                              </ul>
-                          @else
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <li><a class="dropdown-item" href="/transaksiUser"><i class="bi bi-clipboard-minus"></i>
-                                          My Transaction</a></li>
-                                  <li>
-                                      <hr class="dropdown-divider">
-                                  </li>
-                                  <li>
-                                      <form action="/logout" action="get">
-                                          @csrf
-                                          <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i>
-                                              Logout</button>
-                                      </form>
-
-                              </ul>
-                          @endif
-                      </li>
-                  @else
+                      <li><hr class="dropdown-divider"></li>
                       <li>
-                      <li class="nav-item">
-                          <a class="nav-link " href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-                      </li>
-                  @endauth
-              </ul>
-          </div>
-      </div>
-  </nav>
+                          <form action="/logout" action="get">
+                              @csrf
+                              <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i> Logout</button>
+                          </form>
+                       
+                    </ul>
+                  </li>
+                @else
+                <li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </li>
+                @endauth
+            </ul>
+           
+        </div>
+    </div>
+    </nav>

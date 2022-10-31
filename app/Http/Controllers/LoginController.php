@@ -8,50 +8,54 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-        return view('login', [
+    public function _constuct(){
+        
+    }
+
+    public function index(){
+        return view('login.index' ,[
             'title' => 'Login'
         ]);
     }
+    
 
-    public function authenticate(Request $request)
-    {
-
-        $credentials = $request->validate([
+    public function authenticate(Request $request){
+        
+        $credentials = $request -> validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-
-        if (Auth::attempt($credentials)) {
+        
+        if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if (Auth::user()->verify === 0) {
+            if(Auth::user()->verify === 0 ){
                 Auth::logout();
-                return back()->with('loginError', 'Login gagal, Silahkan hubungi administrator untuk aktivasi akun anda agar bisa masuk');
+                return back()->with('loginError','Silahkan hubungi administrator untuk aktivasi akun anda agar bisa masuk');
             }
 
             return redirect()->intended('/dashboard');
+
         }
 
-        return back()->with('loginError', 'Login gagal, Silahkan coba lagi');
+        return back()->with('loginError','Silahkan coba lagi');
+
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request){
         Auth::logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerate();
-
+        
         return redirect('/');
+
     }
 
-    public function verify(Request $request, User $user)
-    {
-
+    public function verify(Request $request, User $user){
+      
         $user = User::find($request)->first();
-        if ($user) {
+        if($user){
             $user->verify = '1';
             $user->save();
         }
@@ -59,16 +63,14 @@ class LoginController extends Controller
         return redirect('/admin/member');
     }
 
-    public function block(Request $request)
-    {
-
+    public function block(Request $request){
+       
         $user = User::find($request)->first();
-        if ($user) {
+        if($user){
             $user->verify = '0';
             $user->save();
         }
 
         return redirect('/admin/member');
     }
-
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +32,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'member',
             'verify' => '1',
             'password' => bcrypt('password')
+        ]);
+
+        Category::create([
+            'name' => 'Framework'
+        ]);
+
+        Category::create([
+            'name' => 'Java'
         ]);
     }
 }

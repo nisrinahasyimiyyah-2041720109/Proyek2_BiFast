@@ -5,18 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Modul extends Model
+class materi extends Model
 {
-    protected $table = 'moduls';
+    protected $table = 'materis';
     protected $primaryKey='id';
 
     protected $fillable = [
         'subject',
         'pdf',
-     ];
+        'link',
+        'course_id'
+    ];
 
-    public function bimbel(){
-        return $this->belongsTo(Bimbel::class);
+    public function course(){
+        return $this->belongsTo(Course::class);
     
     }
+    
 }

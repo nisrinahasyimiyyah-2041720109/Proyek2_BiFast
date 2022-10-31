@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bimbel extends Model
+class Course extends Model
 {
-    protected $table = 'bimbels';
-    protected $primaryKey = 'id';
+    protected $table = 'courses';
+    protected $primaryKey='id';
 
     protected $fillable = [
         'title',
@@ -21,23 +21,19 @@ class Bimbel extends Model
         'photo'
     ];
 
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
-
-    public function modul()
-    {
-        return $this->hasMany(Modul::class);
+    
+    public function materi(){
+        return $this->hasMany(Materi::class);
     }
 
-    public function transaksi()
-    {
+    public function transaksi(){
         return $this->hasMany(Transaksi::class);
     }
 }

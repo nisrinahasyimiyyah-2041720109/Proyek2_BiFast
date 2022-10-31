@@ -8,23 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     protected $table = 'transaksis';
-    protected $primaryKey = 'id';
+    protected $primaryKey='id';
 
     protected $fillable = [
         'bukti',
         'user_id',
-        'bimbel_id',
+        'course_id',
         'verify',
         'progres'
     ];
 
-    public function bimbel()
-    {
-        return $this->belongsTo(Course::class, 'bimbel_id');
+    public function course(){
+        return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
+
+ 
 }

@@ -2,22 +2,17 @@
 
 @section('content')
     
-<div class="banner">
-       <div class="container">
-           <div class="row">
-               <div class="col-md-12">
-                   <div class="caption">
-                    <p></p>
-                    <h1 class="fw-bold">BiFast</h1>
-
-                   
-                      
-                       <div class="line-dec"></div>
-                       <h2>Bimbingan Belajar Fast Intitute</h2>
-                              
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+<div class="row">
+    <div class="col ">
+        <div class="profile">
+            <h1 class="fw-bold">Kursus</h1>
+            <h3>
+                Ini Adalah Kursus
+            </h3>
+        </div>
+    </div>
+    <div class="col">
+        
+    </div>
+</div>
 @endsection
